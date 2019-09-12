@@ -9,6 +9,8 @@ import{Image} from "react-native";
 //Aqui, estamos acessando o documento Feed, que vai estar dentro da pasta de pages. O mesmo sera feito para o New
 import Feed from "./pages/Feed";
 import New from "./pages/New";
+//Aqui, estamos definindo o componente logo como uma imagem, que sera carregada na pasta assets, com o nome logo
+import logo from "./assets/saviour.png";
 
 //Aqui, vamos definir o Feed e o New dentro do container de App e do navegador. O arquivo routes, afinal, eh exatamente pra isso: pra controlar a navegacao da aplicacao
 export default createAppContainer(
@@ -17,5 +19,18 @@ export default createAppContainer(
     createStackNavigator({
         Feed,
         New
+    },
+    {
+        //Dentro das opcoes de navegacao padrao, vamos editar o header do aplicativo.      
+        defaultNavigationOptions:{
+            //A imagem "logo" sera o header, e a margin 20 serve pro logo nao ficar colado
+            headerTitle:<Image style={{marginHorizontal:20}}source={logo}/>,
+            //tint color faz os botoes ficarem pretos 
+            headerTintColor: "#000",
+            //Remove o texto "back" quando estiver em outra tela 
+            headerBackTitle:null
+        },
+        //Quando a tela for aberta, ela sera aberta de baixo pra cima 
+        mode:"modal"
     })
 );
