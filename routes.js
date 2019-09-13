@@ -10,7 +10,7 @@ import{Image} from "react-native";
 import Feed from "./pages/Feed";
 import New from "./pages/New";
 //Aqui, estamos definindo o componente logo como uma imagem, que sera carregada na pasta assets, com o nome logo
-import logo from "./assets/saviour.png";
+import logo from "./assets/camera.png";
 
 //Aqui, vamos definir o Feed e o New dentro do container de App e do navegador. O arquivo routes, afinal, eh exatamente pra isso: pra controlar a navegacao da aplicacao
 export default createAppContainer(
