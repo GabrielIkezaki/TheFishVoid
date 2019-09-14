@@ -33,7 +33,7 @@ export default class Feed extends Component {
 
   //Sera executado assim que o componente for montado
   async componentDidMount(){
-    const response = await get("posts");
+    const response = await get("posts?_sort=id:DESC");
     //Estamos botando dados dentro do feed
     this.setState({feed:response.data});
   }
@@ -92,4 +92,64 @@ export default class Feed extends Component {
   
 }
 
-const style = StyleSheet.create({});
+const style = StyleSheet.create({
+  container: {
+    flex: 1
+  },
+
+  feedItem:{
+    marginTop: 20
+  },
+
+  feedItemHeader:{
+    paddingHorizontal: 15,
+    flexDirection:"row",
+    justifyContent:"space-between",
+    alignItems:"center"
+  },
+
+  name:{
+    fontSize:14,
+    color:"#000"
+  },
+
+  place:{
+    fontSize:12,
+    color:"#666",
+    marginTop:2
+  },
+
+  feedImage:{
+    width:"100%",
+    height: 400,
+    marginVertical: 15
+  },
+
+  feedItemFooter:{
+    paddingHorizontal:15
+  },
+
+  actions:{
+    flexDirection:"row"
+  },
+
+  action:{
+    marginRight:8
+  },
+
+  likes:{
+    marginTop:15,
+    fontWeight:"bold",
+    color:"#000"
+  },
+
+  desctription:{
+    lineHeight:18,
+    color:"#000"
+  },
+
+  hashtags:{
+    color:"red"
+  }
+
+});
