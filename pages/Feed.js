@@ -61,7 +61,7 @@ export default class Feed extends Component {
                 
               </View>
               //Este sera o endereco absoluto de toda imagem que estiver no nosso sistema
-              <Image style = {style.feedImage} source = {{uri: `http://192.168.0.17:19000/${item.image.url}`}} />
+              <Image style = {style.feedImage} source = {{uri: 'http://192.168.172.2:1337' + item.image.url}} />
               //No footer da imagem, teremos os botoes de dar like, curtir, e comentar
               <View style = {styles.feedItemFooter}>
                 <View style = {styles.actions}>
