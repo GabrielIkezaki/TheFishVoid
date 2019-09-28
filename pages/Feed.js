@@ -33,7 +33,7 @@ export default class Feed extends Component {
 
   //Sera executado assim que o componente for montado
   async componentDidMount(){
-    const response = await get("posts?_sort=id:DESC");
+    const response = await api.get("posts");
     //Estamos botando dados dentro do feed
     this.setState({feed:response.data});
   }
@@ -61,7 +61,7 @@ export default class Feed extends Component {
                 
               </View>
               //Este sera o endereco absoluto de toda imagem que estiver no nosso sistema
-              <Image style = {style.feedImage} source = {{uri: 'http://192.168.172.2:1337' + item.image.url}} />
+              <Image style = {style.feedImage} source = {{uri: 'http://192.168.0.19:1337' + item.image.url}} />
               //No footer da imagem, teremos os botoes de dar like, curtir, e comentar
               <View style = {styles.feedItemFooter}>
                 <View style = {styles.actions}>
@@ -92,9 +92,9 @@ export default class Feed extends Component {
   
 }
 
-const style = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
-    flex: 1
+  //  0 flex: 1
   },
 
   feedItem:{
