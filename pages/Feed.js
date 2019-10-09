@@ -9,7 +9,8 @@ import {Text, View, Image, TouchableOpacity, FlatList, StyleSheet} from 'react-n
 import camera from "../assets/camera.png";
 import more from "../assets/more.png";
 import like from "../assets/like.png";
-import comment from "../assets/send.png";
+import comment from "../assets/comment.png";
+import send from "../assets/send.png";
 
 
 export default class Feed extends Component {
@@ -33,7 +34,8 @@ export default class Feed extends Component {
 
   //Sera executado assim que o componente for montado
   async componentDidMount(){
-    const response = await get("posts?_sort=id:DESC");
+    //Possivel erro: o nome do "post" 
+    const response = await api.get("posts");
     //Estamos botando dados dentro do feed
     this.setState({feed:response.data});
   }
@@ -50,19 +52,21 @@ export default class Feed extends Component {
         keyExtractor={post=>post.id.toString()}
         //Renderizando o item
         renderItem = {({item})=>(
-          <View style = {style.feedItem}>
-            <View style = {style.feedItemHeader}>
-              <View style = {style.userInfo}>
-                  <Text style = {style.name}></Text>
-                  <Text style={style.place}></Text>
+          <View style = {styles.feedItem}>
+            <View style = {styles.feedItemHeader}>
+              <View style = {styles.userInfo}>
+                  <Text style = {styles.name}>{item.user.username}</Text>
+                  <Text style={styles.place}>{item.place}</Text>
                 </View>
 
                   <Image source={more}/>
                 
               </View>
-              //Este sera o endereco absoluto de toda imagem que estiver no nosso sistema
-              <Image style = {style.feedImage} source = {{uri: 'http://192.168.172.2:1337' + item.image.url}} />
-              //No footer da imagem, teremos os botoes de dar like, curtir, e comentar
+              {/*Este sera o endereco absoluto de toda imagem que estiver no nosso sistema
+              //PROBLEMA: strapi*/}
+              {/*Por algum motivo, a pagina do strapi nao da a opcao de fzr login. Por isso, nao conseguimos acessar a api. Reveja os videos e tente denove fazer login na strapi*/}
+              <Image style = {styles.feedImage} source = {{uri: 'http://192.168.0.17:1337' + item.image.url}} />
+              {/*No footer da imagem, teremos os botoes de dar like, curtir, e comentar*/}
               <View style = {styles.feedItemFooter}>
                 <View style = {styles.actions}>
                     <TouchableOpacity onPress = {()=> {}}>
@@ -92,7 +96,7 @@ export default class Feed extends Component {
   
 }
 
-const style = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     flex: 1
   },
