@@ -1,15 +1,10 @@
 import React from "react";
 
 //Estamos importando e definido o componente de createAppContainer e de createStackNavigator
-<<<<<<< HEAD
 //import{createAppContainer, createStackNavigator} from "react-navigation";
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 
-=======
-import{createAppContainer} from "react-navigation";
-import {createStackNavigator} from 'react-navigation-stack';
->>>>>>> 5da7154b26f6fa371d7e9617da376727bd3798bf
 //Vai ser o logo no topo do app
 import{Image} from "react-native";
 
