@@ -11,6 +11,7 @@ import more from "../assets/more.png";
 import like from "../assets/like.png";
 import comment from "../assets/comment.png";
 import send from "../assets/send.png";
+import { black } from 'ansi-colors';
 
 
 export default class Feed extends Component {
@@ -36,6 +37,7 @@ export default class Feed extends Component {
   async componentDidMount(){
     //Possivel erro: o nome do "post" 
     const response = await api.get("posts");
+    alert (JSON.stringify(response));
     //Estamos botando dados dentro do feed
     this.setState({feed:response.data});
   }
@@ -81,9 +83,10 @@ export default class Feed extends Component {
                       <Image source = {send}/>
                       </TouchableOpacity>
                   </View>
-                  <Text style = {style.likes}>{item.likes}FishLike</Text>
-                  <Text style = {style.desctription}>{item.desctription}</Text>
-                  <Text style = {style.hashtags}>{item.hashtags}</Text>
+                  <Text style = {styles.likes}>{item.likes}FishLike</Text>
+                  <Text style = {styles.description}>{item.description}</Text>
+                  <Text style = {styles.hashtags}>{item.hashtags}</Text>
+                
                 </View>
                   
           </View>
@@ -149,7 +152,7 @@ const styles = StyleSheet.create({
 
   desctription:{
     lineHeight:18,
-    color:"#000"
+    color: "#000"
   },
 
   hashtags:{
